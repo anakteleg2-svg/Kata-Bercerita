@@ -68,4 +68,12 @@ body {
   outline: none;
   font-size: 16px;
   line-height: 1.6;
+
+  color: var(--text);
+  caret-color: var(--text);
+}
+
+.editor:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(255,255,255,0.35);
 }
