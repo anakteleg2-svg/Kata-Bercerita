@@ -83,6 +83,7 @@ body {
 /* ===== CONTAINER ===== */
 .container {
   padding: 16px;
+  padding-top: 90px; /* ruang toolbar */
 }
 
 /* ===== EDITOR ===== */
