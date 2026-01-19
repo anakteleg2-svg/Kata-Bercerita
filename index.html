@@ -10,6 +10,15 @@
 </head>
 <body>
 
+<!-- SIDEBAR KIRI -->
+<div id="sidebar" class="sidebar">
+  <h3>Catatan</h3>
+  <ul id="noteList"></ul>
+  <button id="newNote">＋ Catatan Baru</button>
+</div>
+<div id="overlay" class="overlay hidden"></div>
+
+<!-- TOOLBAR -->
 <header class="toolbar">
   <div class="window-controls">
     <span class="dot red"></span>
@@ -19,6 +28,7 @@
   <h1>Kata Bercerita</h1>
 </header>
 
+<!-- EDITOR -->
 <main class="container">
   <div
     id="editor"
@@ -27,6 +37,12 @@
     data-placeholder="Tulis ceritamu di sini...">
   </div>
 </main>
+
+<!-- NOTE MENU (RENAME / DELETE) -->
+<div id="noteMenu" class="note-menu hidden">
+  <button id="renameNote">✏️ Rename</button>
+  <button id="deleteNote">🗑 Delete</button>
+</div>
 
 <script src="script.js"></script>
 </body>
