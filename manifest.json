@@ -1,12 +1,10 @@
 {
   "name": "Kata Bercerita",
   "short_name": "Kata",
-  "description": "Catatan kata dan cerita",
   "start_url": ".",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#f5f5f7",
-  "theme_color": "#ffd60a",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
   "icons": [
     {
       "src": "icon-192.png",
