@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Kata Bercerita</title>
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Kata Bercerita">
-
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f5f7">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c1c1e">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header class="toolbar glass">
-    <div class="window-controls">● ● ●</div>
-    <div class="title">Kata Bercerita</div>
-  </header>
 
-  <main class="content">
-    <div
-  id="editor"
-  class="editor glass"
-  contenteditable="true"
-  data-placeholder="Tulis ceritamu di sini...">
-</div>
-  </main>
+<header class="toolbar">
+  <div class="window-controls">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+  </div>
+  <h1>Kata Bercerita</h1>
+</header>
 
-  <script src="app.js"></script>
+<main class="container">
+  <div
+    id="editor"
+    class="editor glass"
+    contenteditable="true"
+    data-placeholder="Tulis ceritamu di sini...">
+  </div>
+</main>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
-    }
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
