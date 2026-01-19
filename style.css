@@ -1,79 +1,124 @@
+/* ===== ROOT ===== */
 :root {
-  --bg: #f5f5f7;
-  --card: rgba(255,255,255,0.65);
-  --text: #1c1c1e;
-  --border: rgba(0,0,0,0.08);
+  --bg-light: #f5f5f7;
+  --bg-dark: #0f0f0f;
+  --glass-light: rgba(255,255,255,0.75);
+  --glass-dark: rgba(30,30,30,0.65);
+  --text-light: #111;
+  --text-dark: #fff;
+  --accent: #facc15;
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1c1c1e;
-    --card: rgba(28,28,30,0.65);
-    --text: #f5f5f7;
-    --border: rgba(255,255,255,0.1);
+  body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
   }
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* GLASS */
-.glass {
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background: var(--card);
-  border: 1px solid var(--border);
-  transition: all .4s ease;
-}
-
-/* TOOLBAR */
+/* ===== TOOLBAR ===== */
 .toolbar {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 14px;
-  text-align: center;
-  z-index: 10;
+  padding-top: calc(14px + env(safe-area-inset-top));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass-light);
+  z-index: 100;
+  transition: transform .3s ease;
 }
 
-.window-controls {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  opacity: .7;
+@media (prefers-color-scheme: dark) {
+  .toolbar {
+    background: var(--glass-dark);
+  }
 }
 
-.title {
+.toolbar h1 {
+  font-size: 16px;
   font-weight: 600;
 }
 
-/* CONTENT */
-.content {
+/* ===== WINDOW CONTROLS ===== */
+.window-controls {
+  position: absolute;
+  left: 16px;
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.dot:active {
+  transform: scale(0.85);
+  opacity: 0.7;
+}
+
+.red { background: #ff5f57; }
+.yellow { background: #ffbd2e; }
+.green { background: #28c840; }
+
+/* ===== CONTAINER ===== */
+.container {
   padding: 16px;
 }
 
+/* ===== EDITOR ===== */
 .editor {
-  min-height: 70vh;
+  min-height: 75vh;
   padding: 18px;
   border-radius: 18px;
   outline: none;
   font-size: 16px;
   line-height: 1.6;
-
-  color: var(--text);
-  caret-color: var(--text);
+  color: inherit;
+  caret-color: inherit;
 }
 
+/* Placeholder Apple-style */
 .editor:empty::before {
   content: attr(data-placeholder);
-  color: rgba(255,255,255,0.35);
+  opacity: 0.35;
+}
+
+/* ===== GLASS EFFECT ===== */
+.glass {
+  background: var(--glass-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: var(--glass-dark);
+  }
+}
+
+/* ===== iOS OVERSCROLL ===== */
+body {
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: var(--accent);
+  color: #000;
 }
