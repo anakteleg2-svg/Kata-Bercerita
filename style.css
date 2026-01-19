@@ -30,25 +30,16 @@ body {
   top: 0;
   left: 0;
   right: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 14px;
   padding-top: calc(14px + env(safe-area-inset-top));
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   background: rgba(20,20,20,0.75);
   z-index: 9999;
-}
-
-@media (prefers-color-scheme: dark) {
-  .toolbar {
-    background: var(--glass-dark);
-  }
+  transition: transform .3s ease;
 }
 
 .toolbar h1 {
@@ -69,7 +60,9 @@ body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
+  transition: transform .15s ease, opacity .15s ease;
 }
+
 .dot:active {
   transform: scale(0.85);
   opacity: 0.7;
@@ -88,6 +81,7 @@ body {
 /* ===== EDITOR ===== */
 .editor {
   min-height: 75vh;
+  width: 100%;
   padding: 18px;
   border-radius: 18px;
   outline: none;
@@ -95,6 +89,10 @@ body {
   line-height: 1.6;
   color: inherit;
   caret-color: inherit;
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
+  touch-action: manipulation;
 }
 
 /* Placeholder Apple-style */
@@ -115,6 +113,83 @@ body {
     background: var(--glass-dark);
   }
 }
+
+/* ===== SIDEBAR LEFT ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 78%;
+  max-width: 320px;
+  padding: 16px;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  background: rgba(20,20,20,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  z-index: 99999;
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+.sidebar h3 { margin-top:0; margin-bottom:12px; }
+.sidebar ul { list-style: none; padding:0; margin:0; }
+.sidebar li {
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+}
+.sidebar li:active { opacity: .7; }
+#newNote {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #facc15;
+  border: none;
+  font-weight: 600;
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 99998;
+}
+
+/* ===== NOTE MENU ===== */
+.note-menu {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  background: rgba(30,30,30,0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  z-index: 999999;
+}
+
+.note-menu button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  background: #1f1f1f;
+  color: white;
+}
+
+.note-menu button:active { opacity: .7; }
+.hidden { display: none; }
 
 /* ===== iOS OVERSCROLL ===== */
 body {
